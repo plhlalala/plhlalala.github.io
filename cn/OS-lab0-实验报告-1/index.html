@@ -516,7 +516,7 @@
 <p>• echo second &gt; output.txt</p>
 <p>• echo third &gt; output.txt</p>
 <p>• echo forth &gt;&gt; output.txt</p>
-<p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240311235028471.png" alt="image-20240311235028471"></p>
+<p><img src="echo.png" alt="echo test"></p>
 <p>以上指令是echo，输出重定向基本用法，其中&gt;和&gt;&gt;分别是覆盖和追加到输出</p>
 <h3 id="Thinking-0-6">Thinking  0.6</h3>
 <p>使用你知道的方法（包括重定向）创建下图内容的文件（文件命名为 test），将创建该文件的命令序列保存在 command 文件中，并将 test 文件作为批处理文件运行，将运行结果输出至 result 文件中。给出 command 文件和 result 文件的内容，并对最后的结果进行解释说明（可以从 test 文件的内容入手）. 具体实现的过程中思考下列问题: echo echo Shell Start 与 echo <code>echo Shell Start</code> 效果是否有区别; echo echo $c&gt;file1与 echo <code>echo $c&gt;file1</code> 效果是否有区别.</p>
@@ -533,7 +533,7 @@
 <ul>
 <li>
 <p>echo echo $c&gt;file1与 echo `echo $c&gt;file1` 效果是否有区别.</p>
-<p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240312151155453.png" alt="image-20240312151155453"></p>
+<p><img src="echo2.png" alt="echo2"></p>
 </li>
 </ul>
 <p>如图，有区别，给c赋一个值22371177，第一个命令会在file1里输出<code>echo 22371177</code></p>
