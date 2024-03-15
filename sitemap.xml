@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://plhlalala.github.io/undefined/OS-lab0-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</loc>
+    
+    <lastmod>2024-03-15</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://plhlalala.github.io/tags/index.html</loc>
     
     <lastmod>2024-03-15</lastmod>
@@ -59,10 +66,24 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://plhlalala.github.io/tags/OS/</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
     <loc>http://plhlalala.github.io/categories/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://plhlalala.github.io/categories/OS/</loc>
     <lastmod>2024-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
