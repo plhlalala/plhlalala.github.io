@@ -59,10 +59,24 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>http://plhlalala.github.io/tags/OS/</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
     <loc>http://plhlalala.github.io/categories/Hexo-Theme-LiveMyLife/</loc>
+    <lastmod>2024-03-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://plhlalala.github.io/categories/BUAA-OS/</loc>
     <lastmod>2024-03-15</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
