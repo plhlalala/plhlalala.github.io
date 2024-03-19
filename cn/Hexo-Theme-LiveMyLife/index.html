@@ -468,41 +468,41 @@ Gitee 仓库地址：<a target="_blank" rel="noopener" href="https://gitee.com/V
 <p>为了方便起见，我发布了整个项目，因此您可以按照下面的说明进行操作，然后就可以轻松自定义您自己的博客！</p>
 <p>让我们开始!!!</p>
 <h3 id="安装-Node-js-和-Git">安装 Node.js 和 Git</h3>
-<pre class="language-shell" data-language="shell"><code class="language-shell">#For Mac
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#For Mac
 brew install node
-brew install git</code></pre>
+brew install git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>Windows：下载 &amp; 安装 Node.js。-&gt; <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">Node.js</a></p>
 <p>Windows：下载 &amp; 安装 Git。-&gt; <a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git</a></p>
 </blockquote>
 <h3 id="安装-Hexo">安装 Hexo</h3>
-<pre class="language-shell" data-language="shell"><code class="language-shell">$ npm install -g hexo-cli</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ npm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>什么是 <a target="_blank" rel="noopener" href="https://hexo.io/docs/">Hexo</a>?</p>
 <p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
 </blockquote>
 <h3 id="设置你的博客">设置你的博客</h3>
-<pre class="language-shell" data-language="shell"><code class="language-shell">$ hexo init blog</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ hexo init blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <blockquote>
 <p>更多的命令 -&gt; <a target="_blank" rel="noopener" href="https://hexo.io/docs/commands">Hexo Commands</a></p>
 </blockquote>
 <h2 id="主题使用">主题使用</h2>
 <h3 id="初始化">初始化</h3>
-<pre class="language-shell" data-language="shell"><code class="language-shell">cd blog
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd blog
 rm -rf scaffolds source themes _config.landscape.yml _config.yml package.json yarn.lock #just keep node_modules
 git clone https:&#x2F;&#x2F;github.com&#x2F;V-Vincen&#x2F;hexo-theme-livemylife.git
 mv hexo-theme-livemylife&#x2F;* .&#x2F;
 rm -rf hexo-theme-livemylife
-npm install</code></pre>
+npm install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="设置主题">设置主题</h3>
 <p>修改 <code>theme</code> 属性值，在 <code>_config.yml</code> 配置文件中。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Extensions
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Extensions
 ## Themes: https:&#x2F;&#x2F;hexo.io&#x2F;themes&#x2F;
 ## Plugins: https:&#x2F;&#x2F;hexo.io&#x2F;plugins&#x2F;
-theme: livemylife</code></pre>
+theme: livemylife<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="启动服务">启动服务</h3>
-<pre class="language-shell" data-language="shell"><code class="language-shell">hexo generate # or hexo g
-hexo server   # or hexo s</code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo generate # or hexo g
+hexo server   # or hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>启动本地服务器。 默认访问地址 <code>http://localhost:4000/</code>。</p>
 <blockquote>
 <p>更多命令 -&gt; <a target="_blank" rel="noopener" href="https://hexo.io/docs/commands">Hexo Commands</a></p>
@@ -511,14 +511,14 @@ hexo server   # or hexo s</code></pre>
 <p>使用您自己的信息修改 <code>_config.yml</code> 配置文件，尤其是以下部分：</p>
 <h3 id="网址信息配置">网址信息配置</h3>
 <p>将以下信息替换为您自己的信息。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Site
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Site
 title: Live My Life
 subtitle: 淡而无味也是一种味道
 author: Mr.Vincent
-timezone:</code></pre>
+timezone:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="语言国际化-i18n">语言国际化 (i18n)</h3>
 <p>若要让您的网站以不同语言呈现，您可使用国际化（internationalization）功能。-&gt; 文档：<a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/How-to-Use-Internationalization%EF%BC%88i18n%EF%BC%89/">How to Use Internationalization（i18n）</a></p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Internationalization (i18n) Setting
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Internationalization (i18n) Setting
 language: # At present, only en、cn and tw are supported. You can customize the language，refer to &#96;languages&#x2F;en.yml&#96;.
   - en
   - cn
@@ -548,47 +548,47 @@ archive_generator:
   yearly: true
   monthly: true
   daily: false
-  order_by: -date</code></pre>
+  order_by: -date<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>English 预览：</em></p>
 <p><img src="langen.png" alt="en"></p>
 <p><em>Chinese 预览：</em></p>
 <p><img src="langcn.png" alt="cn"></p>
 <h3 id="CDN-配置">CDN 配置</h3>
 <p>JsDelivr JsDelivr是一种免费，快速，可靠和自动化的CDN，可用于开源。如何使用 Jsdelivr？-&gt; 文档：<a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/Github-%E5%8A%A0%E9%80%9F%E4%BC%98%E5%8C%96/#%E5%85%8D%E8%B4%B9-CDN-%E6%8F%90%E9%80%9F-Github-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E8%AE%BF%E9%97%AE">免费 CDN 提速 Github 静态资源访问</a></p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># CDN Setting
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># CDN Setting
 # Docs: https:&#x2F;&#x2F;www.jsdelivr.com&#x2F;?docs&#x3D;gh
 # If Github Pages deploy，you can ues jsdelivr settings
 #
 jsdelivr:
   jsdelivr_url: https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;
-  github_username: V-Vincen</code></pre>
+  github_username: V-Vincen<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注意：</strong> Hexo-theme-livemylife 主题中有大量的 css、js 和 images，为了提高访问速度，主题中所有资源文件都使用了 JsDelivr CDN（内容分发）。但仅适用于 Github Pages 部署方式。-&gt; 文档：<a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/How-to-apply-JsDelivr-CDN-in-Hexo-theme-livemylife-Theme/">How to apply JsDelivr CDN in Hexo-theme-livemylife Theme</a></p>
 <h3 id="站点设置">站点设置</h3>
 <p>将自定义图片放在 <code>img</code> 目录中。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Site settings
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Site settings
 SEOTitle: JavaDev | 一如Java深似海
 email: hexo-theme-livemylife@mail.com
 description: &quot;It&#39;s an IT blog...&quot;
 keyword: &quot;Java,v-vincen,v-vincen,livemylife,IT  blog,Blog&quot;
 header-img: img&#x2F;header_img&#x2F;newhome_bg.jpg
-archives-img: img&#x2F;header_img&#x2F;archive_bg2.jpg</code></pre>
+archives-img: img&#x2F;header_img&#x2F;archive_bg2.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="网站图标设置">网站图标设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml">favicon: img&#x2F;avatar&#x2F;favicon.jpg</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">favicon: img&#x2F;avatar&#x2F;favicon.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="签名设置">签名设置</h3>
 <p>将您的签名图片复制到 <code>&lt;root&gt;/img/signature</code> 并修改配置文件 <code>_config.yml</code>。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">signature: true   # show signature
-signature-img: img&#x2F;signature&#x2F;&lt;your-signature&gt;</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">signature: true   # show signature
+signature-img: img&#x2F;signature&#x2F;&lt;your-signature&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <blockquote>
 <p>如何制作签名 -&gt; <a target="_blank" rel="noopener" href="https://fontmeme.com/signature-fonts/">Free Online Signature</a></p>
 </blockquote>
 <h3 id="波浪设置">波浪设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Wave settings
-wave: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Wave settings
+wave: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><em>案例：</em></p>
 <p><img src="wave.png" alt="wave"></p>
 <h3 id="社交网络服务设置">社交网络服务设置</h3>
 <p>如果您不想显示它，则可以直接将其删除。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># SNS settings
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># SNS settings
 # RSS: true
 github_username: V-Vincen
 twitter_username: V_Vincen_
@@ -596,10 +596,10 @@ instagram_username: V_Vincen_
 # facebook_username:  yourAccount
 # linkedin_username:  yourAccount
 # zhihu_username: yourAccount
-weibo_username: WVincen</code></pre>
+weibo_username: WVincen<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="侧边栏设置">侧边栏设置</h3>
 <p>将您的头像复制到 <code>&lt;root&gt;/img/avatar</code> 并修改配置文件 <code>_config.yml</code>。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">sidebar: true   # whether or not using Sidebar.
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">sidebar: true   # whether or not using Sidebar.
 sidebar-about-description: &quot;I don&#39;t know where I am going ,but I am on my way...&quot;
 sidebar-avatar: img&#x2F;avatar&#x2F;vincnet.jpg    # use absolute URL, seeing it&#39;s used in both &#96;&#x2F;&#96; and &#96;&#x2F;about&#x2F;&#96;
 widgets:
@@ -629,12 +629,12 @@ friends: [
         title: &quot;Teacher Ye&quot;,
         href: &quot;http:&#x2F;&#x2F;teacherye.com&#x2F;&quot;
     &#125;
-]</code></pre>
+]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="评论系统设置">评论系统设置</h3>
 <p>Hexo-Theme-LiveMyLife 主题暂时支持三种评论方式。我使用 gitalk 为默认评论系统。</p>
 <h4 id="Gitalk">Gitalk</h4>
 <p>Gitalk 是基于 GitHub Issue 和 Preact 的现代化的评论组件。 有关详细的配置方法，请参考 <a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">Gitalk</a> 官方文档。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Gitalk Settings
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Gitalk Settings
 # Doc: https:&#x2F;&#x2F;github.com&#x2F;gitalk&#x2F;gitalk&#x2F;blob&#x2F;master&#x2F;readme-cn.md
 gitalk:
   owner:                          # &#39;GitHub repo owner&#39;
@@ -647,10 +647,10 @@ gitalk:
   createIssueManually: false      # By default, Gitalk will create a corresponding github issue for your every single page automatically when the logined user is belong to the admin users. You can create it manually by setting this option to true
   language: en                    # Localization language key, en, zh-CN and zh-TW are currently available.
   maxCommentHeight: 250           # An optional number to limit comments&#39; max height, over which comments will be folded.Default 250.
-  proxy: https:&#x2F;&#x2F;cors-anywhere.azm.workers.dev&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token                         # GitHub oauth request reverse proxy for CORS. For example, the demo url is &#39;https:&#x2F;&#x2F;cors-anywhere.herokuapp.com&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token&#39;.You should deploy your own proxy url as in this issue https:&#x2F;&#x2F;github.com&#x2F;gitalk&#x2F;gitalk&#x2F;issues&#x2F;429.</code></pre>
+  proxy: https:&#x2F;&#x2F;cors-anywhere.azm.workers.dev&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token                         # GitHub oauth request reverse proxy for CORS. For example, the demo url is &#39;https:&#x2F;&#x2F;cors-anywhere.herokuapp.com&#x2F;https:&#x2F;&#x2F;github.com&#x2F;login&#x2F;oauth&#x2F;access_token&#39;.You should deploy your own proxy url as in this issue https:&#x2F;&#x2F;github.com&#x2F;gitalk&#x2F;gitalk&#x2F;issues&#x2F;429.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Gitment">Gitment</h4>
 <p>Gitment 是一个基于 GitHub Issues 的评论系统，可以在前端使用它，而无需任何服务器端实现。有关详细的配置方法，请参见 <a target="_blank" rel="noopener" href="https://github.com/imsun/gitment">Gitment</a> 官方文档。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">## Gitment Settings
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">## Gitment Settings
 ## Doc: https:&#x2F;&#x2F;github.com&#x2F;imsun&#x2F;gitment
 gitment:
   owner:                          # Your GitHub ID. Required.
@@ -659,22 +659,22 @@ gitment:
   client_secret:                  # GitHub client secret. Required.
   desc:                           # An optional description for your page, used in issue&#39;s body. Default &#39;&#39;.
   perPage: 10                     # An optional number to which comments will be paginated. Default 20.
-  maxCommentHeight: 250           # An optional number to limit comments&#39; max height, over which comments will be folded. Default 250.</code></pre>
+  maxCommentHeight: 250           # An optional number to limit comments&#39; max height, over which comments will be folded. Default 250.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Disqus">Disqus</h4>
 <p>如果你想要使用 <a target="_blank" rel="noopener" href="https://disqus.com/">Disqus</a> 评论系统，则必须有代理。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Disqus settings
-disqus_username: your-disqus-ID</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Disqus settings
+disqus_username: your-disqus-ID<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="站点分析设置">站点分析设置</h3>
 <p>如何配置站点分析? -&gt; 文档：<a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/Analytics-and-Sitemap-Settings/">Analytics and Sitemap Settings</a></p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Analytics settings
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Analytics settings
 # Google Analytics
 ga_track_id: UA-xxxxxx-xx   # Format: UA-xxxxxx-xx
 
 # Baidu Analytics
-ba_track_id: ba_track_id</code></pre>
+ba_track_id: ba_track_id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="站点地图设置">站点地图设置</h3>
 <p>如何配置站点地图? -&gt; 文档：<a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/Analytics-and-Sitemap-Settings/">Analytics and Sitemap Settings</a></p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Google sitemap
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Google sitemap
 sitemap:
   path: sitemap.xml
 
@@ -682,17 +682,17 @@ sitemap:
 baidusitemap:
   path: baidusitemap.xml
 
-baidu_push: true</code></pre>
+baidu_push: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="置顶图标设置">置顶图标设置</h3>
 <p>我使用的置顶图标是键头，你可以在 <code>sourcre/css/images</code> 目录下替换你自己想要的图标。</p>
 <h3 id="文章标签">文章标签</h3>
 <p>您可以选择是否显示博文标签。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">home_posts_tag: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">home_posts_tag: true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><em>案例：</em></p>
 <p><img src="home_posts_tag-true.png" alt="home_posts_tag-true"></p>
 <h3 id="Markdown-渲染器">Markdown 渲染器</h3>
 <p>我使用的 markdown 渲染引擎插件是 <a target="_blank" rel="noopener" href="https://github.com/celsomiranda/hexo-renderer-markdown-it">hexo-renderer-markdown-it</a>。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Markdown-it config
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Markdown-it config
 ## Docs: https:&#x2F;&#x2F;github.com&#x2F;celsomiranda&#x2F;hexo-renderer-markdown-it&#x2F;wiki
 markdown:
   render:
@@ -701,14 +701,14 @@ markdown:
     breaks: true
     linkify: true
     typographer: true
-    quotes: &#39;“”‘’&#39;</code></pre>
+    quotes: &#39;“”‘’&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="安装-Mathjax（数学公式渲染器）">安装 Mathjax（数学公式渲染器）</h3>
 <p>要安装 Mathjax，请单击 <a target="_blank" rel="noopener" href="https://v-vincen.github.io/en/How-to-Use-Mathjax/">How to Use Mathjax</a>  以获取详细的教程。</p>
 <h3 id="Anchorjs（锚点）设置">Anchorjs（锚点）设置</h3>
 <p>如果你想要更改文章目录标题前部的锚点 “❡”，则可以到 <code>layout/_partial/anchorjs.ejs</code> 目录下进行更改。如何使用 anchorjs，请参阅 <a target="_blank" rel="noopener" href="https://www.bryanbraun.com/anchorjs/#examples">AnchorJS</a> 以获取详细示例。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Anchorjs Settings
-anchorjs: true    # if you want to customize anchor. check out line:26 of &#96;anchorjs.ejs&#96;</code></pre>
-<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">async</span><span class="token punctuation">(</span><span class="token string">"//cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Anchorjs Settings
+anchorjs: true    # if you want to customize anchor. check out line:26 of &#96;anchorjs.ejs&#96;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">async</span><span class="token punctuation">(</span><span class="token string">"//cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js"</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         anchors<span class="token punctuation">.</span>options <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
           visible<span class="token operator">:</span> <span class="token string">'hover'</span><span class="token punctuation">,</span>
           placement<span class="token operator">:</span> <span class="token string">'left'</span><span class="token punctuation">,</span>
@@ -716,49 +716,49 @@ anchorjs: true    # if you want to customize anchor. check out line:26 of &#96;a
           <span class="token comment">// icon: 'ℬ'</span>
         <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
         anchors<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'.intro-header h1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'.subheading'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token string">'.sidebar-container h5'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span></code></pre>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="博文置顶">博文置顶</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># article top
-top: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># article top
+top: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>Hexo-theme-livemylife 主题添加了文章顶部功能，只要在您的 markdown 笔记中添加属性<code>sticky: number</code> 配置，文章按此数字排序。<br>
 <em>案例：</em></p>
 <p><img src="top.png" alt="top"></p>
 <h3 id="文章字数统计设置">文章字数统计设置</h3>
 <p>WordCount 是 Hexo 的文章字数统计插件. 有关详细的配置方法，请参见 <a target="_blank" rel="noopener" href="https://github.com/willin/hexo-wordcount">WordCount</a> 文档。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;willin&#x2F;hexo-wordcount
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;willin&#x2F;hexo-wordcount
 # Docs: https:&#x2F;&#x2F;www.npmjs.com&#x2F;package&#x2F;hexo-wordcount
-wordcount: true</code></pre>
+wordcount: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="Busuanzi（不蒜子）设置">Busuanzi（不蒜子）设置</h3>
 <p>Busuanzi 是一个网站流量统计插件。如何使用 Busuanzi，有关详细示例，请参见 <a target="_blank" rel="noopener" href="https://ibruce.info/2015/04/04/busuanzi/">Busuanzi</a> 文档。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">## Dependencies: https:&#x2F;&#x2F;busuanzi.ibruce.info&#x2F;
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">## Dependencies: https:&#x2F;&#x2F;busuanzi.ibruce.info&#x2F;
 ## Docs: https:&#x2F;&#x2F;ibruce.info&#x2F;
-busuanzi: true</code></pre>
+busuanzi: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="顶部滚动进度条设置">顶部滚动进度条设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># top scroll progress
-scroll: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># top scroll progress
+scroll: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="著作权声明设置">著作权声明设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml">tip:
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">tip:
   enable: true
-  copyright: Say what you think... # If the copyright is blank, the default value will be used.</code></pre>
+  copyright: Say what you think... # If the copyright is blank, the default value will be used.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="社交分享博文设置">社交分享博文设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml">#Docs: https:&#x2F;&#x2F;github.com&#x2F;overtrue&#x2F;share.js
-share: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">#Docs: https:&#x2F;&#x2F;github.com&#x2F;overtrue&#x2F;share.js
+share: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="Viewer（图片预览）设置">Viewer（图片预览）设置</h3>
 <p>Viewer 是一个简单的 jQuery 图片预览插件. 让我们首先看一个 <a target="_blank" rel="noopener" href="https://fengyuanchen.github.io/viewer/">demo</a>。有关详细配置，请参见 <a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/viewer">Viewer</a> 官方文档。 如果要修改 Viewer 的 <a target="_blank" rel="noopener" href="https://github.com/fengyuanchen/viewerjs#options">options</a> 设置，则可以到 <code>sourcre/js/viewer/pic-viewer.js</code> 目录下修改。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Viewer config
-viewer: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Viewer config
+viewer: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="主题模式设置">主题模式设置</h3>
 <p>Hexo-Theme-LiveMyLife 主题暂时支持两种主题模式。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># ThemeColor config
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># ThemeColor config
 themecolor:
   enable: true
-  mode: dark # themecolor mode light or dark, default light</code></pre>
+  mode: dark # themecolor mode light or dark, default light<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>明亮主题模式预览：</em></p>
 <p><img src="light.png" alt="light theme"></p>
 <p><em>黑暗主题模式预览：</em></p>
 <p><img src="dark.png" alt="dark theme"></p>
 <h3 id="鼠标点击效果设置">鼠标点击效果设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Mouseclick config
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Mouseclick config
 mouseclick:
   enable: true
   content:
@@ -780,19 +780,19 @@ mouseclick:
     - &#39;#6666CC&#39;
     - &#39;#663399&#39;
     - &#39;#66CC99&#39;
-    - &#39;#FF0033&#39;</code></pre>
+    - &#39;#FF0033&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><em>鼠标点击效果预览：</em></p>
 <p><img src="mouseclick.png" alt="mouseclick"></p>
 <h3 id="背景绸带效果设置">背景绸带效果设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml">ribbonDynamic: true</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">ribbonDynamic: true<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><em>背景绸带效果预览：</em></p>
 <p><img src="ribbon.png" alt="ribbon"></p>
 <h3 id="背景线画布效果设置">背景线画布效果设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml">bglinecanvas: true  # The special effects will take up a lot of cpu resorces, please open it carefully.</code></pre>
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">bglinecanvas: true  # The special effects will take up a lot of cpu resorces, please open it carefully.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><em>背景线画布效果预览：</em></p>
 <p><img src="bglinecanvas.png" alt="bglinecanvas"></p>
 <h3 id="搜索设置">搜索设置</h3>
-<pre class="language-yml" data-language="yml"><code class="language-yml"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;V-Vincen&#x2F;hexo-generator-zip-search
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;V-Vincen&#x2F;hexo-generator-zip-search
 search:
   enable: true
   path: search.json
@@ -803,24 +803,24 @@ search:
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
   # show top n results per article, show all results by setting to -1
-  top_n_per_article: 1</code></pre>
+  top_n_per_article: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Gitter（聊天室）">Gitter（聊天室）</h3>
 <p>Gitter 是一个聊天和网络平台，通过消息、内容和发现，帮助管理、发展和连接社区。 详细配置方法请查看 <a target="_blank" rel="noopener" href="https://gitter.im/">Gitter</a> 官方文档。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">## Docs:https:&#x2F;&#x2F;gitter.im&#x2F;?utm_source&#x3D;left-menu-logo
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">## Docs:https:&#x2F;&#x2F;gitter.im&#x2F;?utm_source&#x3D;left-menu-logo
 ##
 gitter:
-  room: your-community&#x2F;your-room</code></pre>
+  room: your-community&#x2F;your-room<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="部署">部署</h3>
 <p>替换为你自己的仓库地址。</p>
-<pre class="language-yml" data-language="yml"><code class="language-yml">deploy:
+<pre class="line-numbers language-yml" data-language="yml"><code class="language-yml">deploy:
   type: git
   repo: https:&#x2F;&#x2F;github.com&#x2F;&lt;yourAccount&gt;&#x2F;&lt;repo&gt; # or https:&#x2F;&#x2F;gitee.com&#x2F;&lt;yourAccount&gt;&#x2F;&lt;repo&gt;
-  branch: &lt;your-branch&gt;</code></pre>
+  branch: &lt;your-branch&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Hexo-常用命令">Hexo 常用命令</h2>
-<pre class="language-bash" data-language="bash"><code class="language-bash">hexo new post <span class="token string">"&lt;post name>"</span>   <span class="token comment"># you can change post to another layout if you want</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">hexo new post <span class="token string">"&lt;post name>"</span>   <span class="token comment"># you can change post to another layout if you want</span>
 hexo clean <span class="token operator">&amp;&amp;</span> hexo generate   <span class="token comment"># generate the static file</span>
 hexo server   <span class="token comment"># run hexo in local environment</span>
-hexo deploy   <span class="token comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span></code></pre>
+hexo deploy   <span class="token comment"># hexo will push the static files automatically into the specific branch(gh-pages) of your repo!</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="有一个好的体验">有一个好的体验 ^_^</h2>
 <p>如果你喜欢该主题，请 <a target="_blank" rel="noopener" href="https://github.com/V-Vincen/hexo-theme-livemylife">Star</a>！不胜感激你的 <a target="_blank" rel="noopener" href="https://github.com/V-Vincen">Follow</a>！比心！</p>
 
