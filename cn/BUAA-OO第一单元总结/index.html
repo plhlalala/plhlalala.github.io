@@ -460,9 +460,9 @@
 <p>三次作业是递进的，第一次由于刚接触递归下降法感觉无从下手，第二次作业相对难度最高，第三次只需在前两次的基础上略作改动即可。经过近一个月的学习，OO第一单元终于结束了。接下来我会对三次作业进行分析，并总结学习心得和体会。</p>
 <h1>第一次作业分析</h1>
 <h2 id="总体分析">总体分析</h2>
-<p>第一次作业的表达式主要包括以下三个部分：<code>Expr</code>，<code>Term</code>，<code>Factor</code>， 而<code>Factor</code>根据形式化表述可以分为三种，幂函数，常数因子，以及表达式因子。Term由一系列相乘的Factor构成，故利用Arraylist&lt;Factor&gt;，Expr由一系列相加减的Term构成，故利用Arraylist&lt;Term&gt;。下图是课程PPT中对这一结构的概括图。</p>
+<p>第一次作业的表达式主要包括以下三个部分：<code>Expr</code>，<code>Term</code>，<code>Factor</code>， 而<code>Factor</code>根据形式化表述可以分为三种，幂函数，常数因子，以及表达式因子。<code>Term</code>由一系列相乘的<code>Factor</code>构成，故利用<code>Arraylist\&lt;Factor&gt;</code>作为容器，<code>Expr</code>由一系列相加减的<code>Term</code>构成，故利用<code>Arraylist\&lt;Term&gt;</code>作为容器。下图是课程PPT中对这一结构的概括图。</p>
 <p><img src="1.png" alt="1"></p>
-<p>根据递归下降算法处理表达式解析的实验，我对递归下降算法的优点有了初步的认识。于是本次作业中我沿用了实验中提供的架构。</p>
+<p>通过递归下降算法处理表达式解析实验的学习，我对递归下降算法的优点有了初步的认识。于是本次作业中我沿用了实验中提供的架构。</p>
 <p>实验中对<code>ExprFactor</code>,<code>Number</code>,<code>Varible</code>的共同行为特征进行抽象，提取出了<code>Factor</code>接口，我的架构中同样采取了这种模式，不过对于表达式因子额外创建了一个类<code>Exprfactor</code>，不同于<code>Expr</code>，采用表达式<code>base</code>加指数<code>index</code>，<code>Expr</code>和<code>Term</code>同样实现了<code>Factor</code>的接口，在后面再具体描述。</p>
 <p>递归下降算法主要通过<code>lexer</code>和<code>parser</code>两个类。<code>lexer</code>主要对表达式中的最小单元进行提取，比如数字，变量因子，以及各种符号，<code>parser</code>主要用于根据形式化文法解析表达式，通过<code>parseExpr</code>调用<code>parseTerm</code>，<code>parseTerm</code>调用<code>parseFactor</code>，而<code>Factor</code>根据当前<code>lexer</code>提取到的<code>token</code>判断是哪种<code>Factor</code>，实例化对象并返回给<code>Term</code>，<code>Term</code>再返回给<code>Expr</code>。至此，表达式中的信息已全部提取出来。值得一提的是，对于表达式因子，这能递归调用<code>parseExpr</code>，刚开始接触可能不是很好理解，但是这个方法可以很好的处理表达式展开的问题。</p>
 <p>接下来我概括一下我的处理流程。</p>
@@ -472,7 +472,7 @@
 <ul>
 <li>去除表达式中所有空白字符</li>
 <li>将表达式中连续的加减号替换成单个加减号</li>
-<li>将^+替换成^ (这一步并不是很必要,影响也不大)</li>
+<li>将^+替换成^ (这一步并不是很必要)</li>
 </ul>
 </li>
 <li>
@@ -491,35 +491,35 @@
 iv(G) 模块设计复杂度是用来衡量模块判定结构，即模块和其他模块的调用关系。软件模块设计复杂度高意味模块耦合度高，这将导致模块难于隔离、维护和复用。
 
 v(G) 是用来衡量一个模块判定结构的复杂程度，数量上表现为独立路径的条数，即合理的预防错误所需测试的最少路径条数。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我截取了我的代码中复杂度较大的一部分，可以看到Mono的tostring方法复杂度较大，是由于Mono输出中我对各种情况进行了判断简化输出，所以复杂度较大。其他方法的复杂度都控制的比较好。</p>
+<p>我按照复杂度排行截取了我的代码中复杂度较大的一部分，可以看到<code>Mono</code>的<code>tostring</code>方法复杂度较大，是由于Mono输出中我对各种情况进行了判断简化输出，所以复杂度较大。其他方法的复杂度都控制的比较好。</p>
 <h3 id="UML类图">UML类图</h3>
 <p>第一次作业主要是单层括号单变量表达式的展开，以下是我本次作业的UML类图。</p>
 <p><img src="3.png" alt="image-20240318192039152"></p>
-<p>Poly类和Mono类是我这次作业的核心，具体解释详见架构设计体验，我的关于表达式的部分类都实现了一个Factor接口，实现向Poly类的转化，借助这个Poly类实现加减乘等运算，最后通过tostring统一进行输出。</p>
+<p><code>Poly</code>类和<code>Mono</code>类是我这次作业的核心，具体解释详见架构设计体验，我的关于表达式的部分类都实现了一个<code>Factor</code>接口，实现向<code>Poly</code>类的转化，借助这个<code>Poly</code>类实现加减乘等运算，最后通过<code>tostring</code>统一进行输出。</p>
 <h2 id="架构设计体验">架构设计体验</h2>
 <p>本次作业中我的基本计算单元可以归纳成如下形式<br>
 $$<br>
 Mono=a_ix^{n_i}<br>
 $$<br>
-数字和变量因子可以直接用这种形式表达，对应UML类图中的Mono类，而表达式则需一系列的Mono类相加，故引入Poly类，形式如下</p>
+数字和变量因子可以直接用这种形式表达，对应UML类图中的<code>Mono</code>类，而表达式则需一系列的<code>Mono</code>类相加，故引入<code>Poly</code>类，形式如下</p>
 <p>$$<br>
 Poly=\sum a_ix^{n_i}<br>
 $$</p>
-<p>可以发现表达式可以转化成Poly的形式方便计算，同样的，数字和变量因子的Mono形式也就是只有一项的Poly,表达式展开的问题就可以得到如下转化：</p>
-<p>将Factor转化成Poly，Term由一系列Poly相乘得到一个Poly，Expr由一系列Poly相加得到一个Poly，也就是我们最终的表达式存储形式。所以，只要我们写好Poly的加法和乘法方法，这个问题总体上就迎刃而解了。（加法和乘法的实现和优化见性能优化分析）</p>
+<p>可以发现表达式可以转化成<code>Poly</code>的形式方便计算，同样的，数字和变量因子的<code>Mono</code>形式也就是只有一项的<code>Poly</code>,表达式展开的问题就可以得到如下转化：</p>
+<p>将<code>Factor</code>转化成<code>Poly</code>，Term由一系列<code>Poly</code>相乘得到一个<code>Poly</code>，<code>Expr</code>由一系列<code>Poly</code>相加得到一个<code>Poly</code>，也就是我们最终的表达式存储形式。所以，只要我们写好<code>Poly</code>的加法和乘法方法，这个问题总体上就迎刃而解了。（加法和乘法的实现和优化见性能优化分析）</p>
 <h2 id="性能优化分析">性能优化分析</h2>
 <ol>
-<li>在实现Poly的加法和乘法时，有以下几点需要注意的。</li>
+<li>在实现<code>Poly</code>的加法和乘法时，有以下几点需要注意的。</li>
 </ol>
 <ul>
 <li>
-<p>Mono与Mono相加，可以判断他们指数是否相同，相同则可以合并成一个Mono，也就是一项的Poly，不相同则相加形成一个Poly</p>
+<p><code>Mono</code>与<code>Mono</code>相加，可以判断他们指数是否相同，相同则可以合并成一个<code>Mono</code>，也就是一项的<code>Poly</code>，不相同则相加形成一个<code>Poly</code></p>
 </li>
 <li>
-<p>Poly与Mono相加，就是Mono与Poly里的每一项Mono比较，看是否能够合并，都不能则给Poly新的一项</p>
+<p><code>Poly</code>与<code>Mono</code>相加，就是<code>Mono</code>与<code>Poly</code>里的每一项<code>Mono</code>比较，看是否能够合并，都不能则给<code>Poly</code>新的一项</p>
 </li>
 <li>
-<p>Poly与Poly相加，就是两个Poly里的所有Mono相加，注意每加一项要与前面的比较是否可以合并</p>
+<p><code>Poly</code>与<code>Poly</code>相加，就是两个<code>Poly</code>里的所有<code>Mono</code>相加，注意每加一项要与前面的比较是否可以合并</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//poly中加法处理</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addmono</span><span class="token punctuation">(</span><span class="token class-name">Mono</span> mono<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Mono</span> tmp <span class="token operator">:</span> monos<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -545,18 +545,18 @@ $$</p>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>Poly</code>的乘法与加法类似，不再赘述，都是要注意与已有的项是否能够合并。</p>
 </li>
 </ul>
-<p>​    Poly的乘法与加法类似，不再赘述，都是要注意与已有的项是否能够合并。</p>
-<p>此外可以看到，我在代码中使用了deepcopy，是由于担心后续处理以及以后的作业会有什么地方会对此处有影响，所以统一采取深拷贝的形式避免隐藏的的bug。</p>
+<p>此外可以看到，我在代码中使用了<code>deepcopy()</code>方法，是由于担心后续处理以及以后的作业会有什么地方会对此处有影响，所以统一采取深拷贝的形式避免隐藏的的bug。</p>
 <ol start="2">
-<li>在最后输出的时候，要注意系数为零的项跳过</li>
-<li>考虑到x-1要优于-1+x，故要尽可能的让最前面一项为正，我的处理方法是构建完结果字符串后，再把其中符号为+的项提前，也就是进行后处理，不影响构建字符后的过程。</li>
+<li>在最后输出的时候，要注意系数为零的项省略</li>
+<li>考虑到x-1要优于-1+x，故要尽可能的让最前面一项为正，我的处理方法是构建完结果字符串后，再把其中符号为+的项提前，也就是进行后处理，尽量把这个过程拆分开，不要影响存储的<code>Poly</code>。</li>
 </ol>
 <h2 id="程序bug分析">程序bug分析</h2>
 <p>第一次作业我的互测和强侧均未出现bug。在互测环节，主要的bug有以下几点。</p>
 <p>1.所有项系数都为0，最后没有输出</p>
-<p>2.用hashmap存储Poly中指数和系数的关系，在输出数字的时候没有输出加号，比如x+1+x^2输出x+1x^2，由于遍历hashmap顺序未知，只在较少的情况下出现这个bug，是通过评测机大量数据测试找到了这个bug。</p>
+<p>2.有的同学用hashmap存储<code>Poly</code>中指数和系数的关系，在输出数字的时候没有输出加号，比如x+1+x^2输出x+1x^2，由于遍历hashmap顺序未知，只在较少的情况下出现这个bug，顺利过了强测，在互测环节是通过评测机大量数据找到了这个bug。</p>
 <h1>第二次作业分析</h1>
 <h2 id="总体分析-2">总体分析</h2>
 <p>第二次作业新增支持嵌套多层括号；新增指数函数因子，指数函数括号内部包含任意因子；新增自定义函数因子，但自定义函数的函数表达式中不会调用其他自定义函数。</p>
@@ -564,23 +564,23 @@ $$</p>
 <h2 id="程序结构分析-2">程序结构分析</h2>
 <h3 id="复杂度分析-2">复杂度分析</h3>
 <p><img src="4.png" alt="4"></p>
-<p>第二次作业中Mono的tostring方法复杂度进一步增大，是由于新增指数函数的输出，为了考虑各种化简情况，进行了比较复杂的嵌套判断，在不改变原有架构的情况下比较难以实现，同时耦合度也增大，是由于为了简化单个方法，把指数情况下的判断分给一个新的方法Poly.getexpstr()，这个方法由于同样的原因复杂度较大；另一部分复杂度明显增加的是自定义函数的字符替换，这个是一个比较面向过程的处理，处理得比较繁琐，复杂度也比较大。</p>
+<p>第二次作业中<code>Mono</code>的<code>tostring</code>方法复杂度进一步增大，是由于新增指数函数的输出，为了考虑各种化简情况，进行了比较复杂的嵌套判断，在不改变原有架构的情况下比较难以实现，同时耦合度也增大，是由于为了简化单个方法，把指数情况下的化简分给一个新的方法<code>Poly.getexpstr()</code>，这个方法由于同样的原因复杂度较大；另一部分复杂度明显增加的是自定义函数的字符替换，这个是一个比较面向过程的处理，处理得比较繁琐，复杂度也比较大。</p>
 <p><img src="5.png" alt="5"></p>
-<p>类中最复杂的也就是Poly和Definefunc类，Definefunc比较面对过程，而Poly承担了大部分的计算和化简输出核心任务，复杂度比较大。</p>
+<p>类中最复杂的也就是<code>Poly</code>和<code>Definefunc</code>类，<code>Definefunc</code>比较面对过程，而<code>Poly</code>承担了大部分的计算和化简输出核心任务，复杂度比较大。</p>
 <h3 id="UML类图-2">UML类图</h3>
 <p><img src="6.png" alt="6"></p>
 <p><img src="7.png" alt="7"></p>
-<p>第二次作业主要的变化是新增了Definefunc类进行字符串替换，与其他类相对独立，从而使后面解析字符串的过程解耦程度较好。新增了Expofunc类存储和处理指数函数，同样实现了Factor接口，同时Mono类进行了调整，详见架构设计体验部分。</p>
+<p>第二次作业主要的变化是新增了<code>Definefunc</code>类进行字符串替换，与其他类相对独立，从而使后面解析字符串的过程解耦程度较好。新增了<code>Expofunc</code>类存储和处理指数函数，同样实现了<code>Factor</code>接口，同时<code>Mono</code>类进行了调整，详见架构设计体验部分。</p>
 <h2 id="架构设计体验-2">架构设计体验</h2>
 <p>第二次作业中我的基本计算单元由于新增指数函数进行了修改，可以归纳成如下形式<br>
 $$<br>
 Mono=a_ix^{n_i}e^{expr}<br>
 $$<br>
-对应UML类图中的Mono类，而表达式则需一系列的Mono类相加，故引入Poly类，形式如下<br>
+对应UML类图中的<code>Mono</code>类，而<code>Poly</code>类形式如下<br>
 $$<br>
 Poly=\sum a_ix^{n_i}e^{expr}<br>
 $$<br>
-这次作业的主要难点在于Mono类新增指数函数部分对于表达式的化简合并造成了影响，我们判断两个Mono实例相等需要判断三个部分相等：系数，x的次数，e的指数部分。而e的指数部分我选择先将这个表达式转换成Poly类，Poly相等的判断又需要逐个比较Mono，这个过程比较复杂。这其实也是一个递归的过程，判断Mono可以合并可以首先比较次数，再比较指数，指数的比较也就是Poly的比较又会绕到Mono的比较，直到指数部分为空Mono变成第一次作业的形式。这时候可以直接比较，然后逐步返回。可以借助下面的部分代码理解。</p>
+这次作业的主要难点在于<code>Mono</code>类新增指数函数部分对于表达式的化简合并造成了影响，我们判断两个<code>Mono</code>实例相等需要判断三个部分相等：系数，x的次数，e的指数部分。而e的指数部分我选择先将这个表达式转换成<code>Poly</code>类，<code>Poly</code>相等的判断又需要逐个比较<code>Mono</code>，这个过程比较复杂。这其实也是一个递归的过程，判断<code>Mono</code>可以合并可以首先比较次数，再比较指数，指数的比较也就是<code>Poly</code>的比较又会绕到<code>Mono</code>的比较，直到指数部分为空，<code>Mono</code>变成第一次作业的形式。这时候可以直接比较，然后逐步返回。可以借助下面的部分代码理解。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// Mono equal方法</span>
 <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equal</span><span class="token punctuation">(</span><span class="token class-name">Mono</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>epoly<span class="token punctuation">.</span><span class="token function">getArr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> a<span class="token punctuation">.</span><span class="token function">getepo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getArr</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -612,7 +612,7 @@ $$<br>
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> judall<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>关于自定义函数我选择字符串替换的方式，是为了这一过程相对独立，不会影响后面的处理，我的Definefunc类主要包含以下方法，要注意的是实参中可能含有f(x,y)这种形式，所以在提取实参列表时要注意括号和逗号的处理，不能简单地用逗号分隔得到实参列表。</p>
+<p>关于自定义函数我选择字符串替换的方式，是为了这一过程相对独立，不会影响后面的处理，我的<code>Definefunc</code>类主要包含以下方法，要注意的是实参中可能含有f(x,y)这种形式，所以在提取实参列表时要注意括号和逗号的处理，不能简单地用逗号分隔得到实参列表。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//Definefunc类</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ArrayList</span><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span><span class="token punctuation">></span></span> nametoParameter<span class="token punctuation">;</span> <span class="token comment">//函数名对应形参列表</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">></span></span> nametoExpr<span class="token punctuation">;</span> <span class="token comment">//函数名对应的表达式</span>
@@ -649,7 +649,7 @@ afterExpr <span class="token operator">=</span> afterExpr<span class="token punc
 </ol>
 <p>有一点要注意：exp((-x))不能化简为exp((x))^-1，指数部分不能为负数，部分同学因为这个产生了bug</p>
 <p>有一个难点是由于 exp⁡(ax+by)=exp(<em>x</em>)^<em>a</em>∗exp(<em>y</em>)^<em>b</em> ,指数函数可以进行较大可能的优化，由于并没有考虑到一个比较完善的化简，故选择不对这部分进行化简。有一个处理方法是提取a和b的最大公因数到指数外边，尽管这未必是最好的优化，可能还会让长度变长，比如exp(2<em>x+4</em>x^2)=exp(x+2*x^2)^2；我们只要做好长度判断，还是可以在部分情况下简化输出的，强测性能测试也证明这是兼顾时间复杂度和简介程度相对不错的策略。</p>
-<p>还有针对多层嵌套，Poly中含有的Mono可能会非常多，我们要及时对容器进行清理，删除其中系数为0的项。这样可以保证数据冗余得到控制。</p>
+<p>还有针对多层嵌套，<code>Poly</code>中含有的<code>Mono</code>可能会非常多，我们要及时对容器进行清理，删除其中系数为0的项。这样可以保证数据冗余得到控制。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deletezero</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>monos<span class="token punctuation">.</span><span class="token function">removeIf</span><span class="token punctuation">(</span>s <span class="token operator">-></span> s<span class="token punctuation">.</span><span class="token function">getcoe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token class-name">BigInteger</span><span class="token punctuation">.</span>ZERO<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -666,18 +666,21 @@ afterExpr <span class="token operator">=</span> afterExpr<span class="token punc
 <h2 id="总体分析-3">总体分析</h2>
 <p>第三次作业支持求导操作,新增求导算子，求导因子可以出现在很多位置，包括函数调用实参，指数函数内部等；函数表达式中支持调用其他“已定义的”函数。</p>
 <p>针对函数表达式中支持调用其他“已定义的”函数，我仍然采用了字符串替换的操作，只需对传入的新的函数表达式先同样进行一遍已有自定义函数的替换，代码表现出了较好的可拓展性。</p>
-<p>针对求导算子，由于我采用了Mono—Poly的结构，只需把要求导的部分转换成Poly，然后再对含有的Mono逐个求导并相加合并，所以只需写好Mono的求导即可，Mono的形式比较简单，求导也不复杂。</p>
+<p>针对求导算子，由于我采用了<code>Mono—Poly</code>的结构，只需把要求导的部分转换成<code>Poly</code>，然后再对含有的<code>Mono</code>逐个求导并相加合并，所以只需写好<code>Mono</code>的求导即可，<code>Mono</code>的形式比较简单，求导也不复杂。</p>
 <h2 id="程序结构分析-3">程序结构分析</h2>
 <h3 id="复杂度分析-3">复杂度分析</h3>
 <p><img src="8.png" alt="8"></p>
-<p>本次作业改动比较小，复杂度除了新增Mono.diffmono方法且不算复杂，没有较大变化，不再赘述。</p>
+<p>本次作业改动比较小，复杂度除了新增<code>Mono.diffmono()</code>方法且不算复杂，没有较大变化，不再赘述。</p>
 <h3 id="UML类图-3">UML类图</h3>
 <p><img src="9.png" alt="9"></p>
-<p>本次新增Defactor类，用于接收一个expr，将其转化成poly，再对poly求导并存储求导后的poly。其他部分没有较大变化，不再赘述。</p>
+<p>本次新增<code>Defactor</code>类，用于接收一个<code>Expr</code>，将其转化成<code>Poly</code>，再对<code>Poly</code>求导并存储求导后的<code>Poly</code>。其他部分没有较大变化，不再赘述。</p>
+<h3 id="最终的程序规模统计">最终的程序规模统计</h3>
+<p><img src="10.png" alt="1"></p>
+<p>以上是我最终的代码规模统计，可以看到总行数899行，源代码行数750行。</p>
 <h2 id="架构设计体验-3">架构设计体验</h2>
 <p>由于前两次的代码可拓展性比较好，加上第三次作业的新增要求不多，第三次作业并没有做较大的改动。</p>
 <p>对于函数定义时的嵌套，只需对新加函数的表达式使用一遍表达式替换，即可消除已有的自定义函数。</p>
-<p>对于求导的处理，其实可以考虑写成统一的形式，但是我由于担心出bug，采取了多个选择分支。</p>
+<p>对于求导的处理，可以考虑写成更简单的形式，不过我开始就先进行分类，由于担心改动出bug，选择了保留。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Poly</span> <span class="token function">diffmono</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">isnumber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//单数字</span>
         ······
@@ -708,9 +711,9 @@ tmp <span class="token operator">=</span> tmp<span class="token punctuation">.</
 dx(exp(exp(exp(exp(exp(exp(exp(exp(x^2)))))))))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如果程序中没有较好的处理各种数据的解析和合并，可能会出现超时的现象。</p>
 <h1>整体架构分析</h1>
-<p>在三次作业中我并没有重构，主要得益于Mono—Poly结构的统一形式以及递归下降算法的优势。</p>
-<p>首先，Mono—Poly结构可以把所有的因子统一成一个形式，便于化简与合并，即使新增因子只需要对Mono进行修改。</p>
-<p>其次，我选择了<strong>递归下降算法</strong>，面对不断增加的因子类型，只需要新增parser和lexer中的对应方法即可。</p>
+<p>在三次作业中我并没有重构，主要得益于<code>Mono—Poly</code>结构的统一形式以及递归下降算法的优势。</p>
+<p>首先，<code>Mono—Poly</code>结构可以把所有的因子统一成一个形式，便于化简与合并，即使新增因子只需要对<code>Mono</code>进行修改。</p>
+<p>其次，我选择了<strong>递归下降算法</strong>，面对不断增加的因子类型，只需要新增<code>parser</code>和<code>lexer</code>中的对应方法即可。</p>
 <h1>强测互测分析</h1>
 <p>由于我们时间和精力的有限，必然不可能手动对各种各样的表达式进行测试和化简，所以自动化的大数据测评机就显得十分重要。通过自己程序的测评，我们可以记录下一些容易错的样例，加入到测评机的必选特殊数据中，在互测的时候针对性的先检查这些样例，再通过大量数据探索其他的错误，这样节省时间的同时也可以取得不错的效果。</p>
 <h1>心得体会</h1>
@@ -868,7 +871,7 @@ dx(exp(exp(exp(exp(exp(exp(exp(exp(x^2)))))))))<span aria-hidden="true" class="l
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第一次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第二次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-2"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C-2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第三次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-3"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C-3"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">整体架构分析</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">强测互测分析</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">心得体会</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第一次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第二次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-2"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C-2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第三次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">程序结构分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-3"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%80%E7%BB%88%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%A7%84%E6%A8%A1%E7%BB%9F%E8%AE%A1"><span class="toc-nav-number">4.2.3.</span> <span class="toc-nav-text">最终的程序规模统计</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C-3"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">架构设计体验</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">性能优化分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8Fbug%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">程序bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">整体架构分析</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">强测互测分析</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">心得体会</span></a></li></ol>
         
         </div>
       </aside>
