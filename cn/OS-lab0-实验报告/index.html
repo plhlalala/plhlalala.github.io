@@ -139,7 +139,7 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://plhlalala.github.io/cn/OS-lab0-实验报告-1/">
+  <link rel="canonical" href="http://plhlalala.github.io/cn/OS-lab0-实验报告/">
   <title>
     
       OS lab0 实验报告 - plh&#39;s blog
@@ -393,7 +393,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.5k</span> In Total
+              Words <span class="post-count">2.6k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -620,31 +620,31 @@ echo &#39;cat file4&gt;&gt;result&#39; &gt;&gt; test
 </li>
 </ol>
 <h3 id="Exercise-0-2">Exercise  0.2</h3>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">rm</span> <span class="token string">"file<span class="token variable">$a</span>"</span> -r
-<span class="token function">mv</span> <span class="token string">"file<span class="token variable">$a</span>"</span> <span class="token string">"newfile<span class="token variable">$a</span>"</span>
-<span class="token builtin class-name">let</span> <span class="token assign-left variable">a</span><span class="token operator">=</span>a+1  <span class="token comment">#修改循环变量的值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">rm &quot;file$a&quot; -r
+mv &quot;file$a&quot; &quot;newfile$a&quot;
+let a&#x3D;a+1  #修改循环变量的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="Exercise-0-3">Exercise  0.3</h3>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment">#First you can use grep (-n) to find the number of lines of string.</span>
-<span class="token comment">#Then you can use awk to separate the answeri.</span>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">#First you can use grep (-n) to find the number of lines of string.
+#Then you can use awk to separate the answeri.
 
-<span class="token function">grep</span> -n <span class="token variable">$2</span> <span class="token variable">$1</span> <span class="token operator">|</span> <span class="token function">cut</span> -f1 -d: <span class="token operator">></span> <span class="token variable">$3</span>
-<span class="token function">grep</span> -n <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> -F: <span class="token string">'&#123;print <span class="token variable">$1</span>&#125;'</span> <span class="token operator">></span> <span class="token string">"<span class="token variable">$3</span>"</span> 
-<span class="token function">grep</span> -n <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">></span>helper
-<span class="token function">awk</span> -F: <span class="token string">'&#123;print <span class="token variable">$1</span>&#125;'</span>  helper <span class="token operator">></span> <span class="token string">"<span class="token variable">$3</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+grep -n $2 $1 | cut -f1 -d: &gt; $3
+grep -n &quot;$2&quot; &quot;$1&quot; | awk -F: &#39;&#123;print $1&#125;&#39; &gt; &quot;$3&quot; 
+grep -n &quot;$2&quot; &quot;$1&quot; &gt;helper
+awk -F: &#39;&#123;print $1&#125;&#39;  helper &gt; &quot;$3&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Exercise-0-4">Exercise  0.4</h3>
 <p>Lab0 第四道练习题包括以下两题，如果你均完成且正确，即可获得 26 分。</p>
 <p>1、在 Lab0 工作区的 csc/code 目录下，存在 fibo.c、main.c，其中 fibo.c 有点小问题，还有一个未补全的 <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> 文件，将其补完，以实现通过命令 bash <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> fibo.c char int，可以将 fibo.c 中所有的 char 字符串更改为 int 字符串。[注意：对于命令 bash <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> fibo.c char int，fibo.c 可为任何合法文件名，char 及 int 可以是任何字符串，评测时评测 <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> 的正确性，而不是检查修改后 fibo.c 的正确性]</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sed</span> -i <span class="token string">"s/<span class="token variable">$2</span>/<span class="token variable">$3</span>/g"</span>  <span class="token variable">$1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sed -i &quot;s&#x2F;$2&#x2F;$3&#x2F;g&quot;  $1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>2、Lab0 工作区的 csc/code/fibo.c 成功更换字段后 (bash <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> fibo.c charint)，现已有 csc/Makefile 和 csc/code/Makefile，补全两个 Makefile 文件，要求在csc 目录下通过命令 make 可在 csc/code 目录中生成 fibo.o、main.o，在 csc 目录中生成可执行文件 fibo，再输入命令 make clean 后只删除两个 .o 文件。[注意：不能修改fibo.h 和 main.c 文件中的内容，提交的文件中 fibo.c 必须是修改后正确的 fibo.c，可执行文件 fibo 作用是输入一个整数 n(从 stdin 输入 n)，可以输出斐波那契数列前 n 项，每一项之间用空格分开。比如 n=5，输出 1 1 2 3 5] 要求成功使用脚本文件 <a target="_blank" rel="noopener" href="http://modify.sh">modify.sh</a> 修改 fibo.c，实现使用 make 命令可以生成 .o 文件和可执行文件，再使用命令 make clean 可以将 .o 文件删除，但保留 fibo 和 .c 文件。最终提交时文件中 fibo 和 .o 文件可有可无。</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">fibo:
-        <span class="token builtin class-name">cd</span> code <span class="token operator">&amp;&amp;</span> <span class="token function">make</span>  <span class="token comment">### 等价于 $(MAKE) -C ./code    $(MAKE) -C subdir main 子目录下执行make main</span>
-        gcc ./code/fibo.o ./code/main.o -o fibo
+        cd code &amp;&amp; make  ### 等价于 $(MAKE) -C .&#x2F;code    $(MAKE) -C subdir main 子目录下执行make main
+        gcc .&#x2F;code&#x2F;fibo.o .&#x2F;code&#x2F;main.o -o fibo
 
 clean:
-        <span class="token function">rm</span> ./code/*.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        rm .&#x2F;code&#x2F;*.o<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">all: fibo.c main.c
-        gcc -c fibo.c -I <span class="token punctuation">..</span>/include
-        gcc -c main.c -I <span class="token punctuation">..</span>/include<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+        gcc -c fibo.c -I ..&#x2F;include
+        gcc -c main.c -I ..&#x2F;include<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><code>-I ../include</code> 当引用非标准库头文件时要加</p>
 <p><code>cd code &amp;&amp; make</code>  等价于 <code>$(MAKE) -C ./code</code></p>
 <h2 id="本次实验分析">本次实验分析</h2>
@@ -713,7 +713,7 @@ clean:
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=OS lab0 实验报告&body=Hi,I found this website and thought you might like it http://plhlalala.github.io/cn/OS-lab0-实验报告-1/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=OS lab0 实验报告&body=Hi,I found this website and thought you might like it http://plhlalala.github.io/cn/OS-lab0-实验报告/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
