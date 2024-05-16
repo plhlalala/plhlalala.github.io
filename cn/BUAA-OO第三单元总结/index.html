@@ -393,7 +393,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">2.3k</span> In Total
+              Words <span class="post-count">2.4k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -456,18 +456,18 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <h1>前言</h1>
-<p>第三单元的主题主要是以基于JML实现一个社交网络。三次作业总体上难度不大，按照JML并在部分数据结构上做好优化即可。JML虽然很繁琐，但是在某些场景下确实有他的用武之地，这个单元让我们初步体验了契约式编程，相较前两个单元轻松不少。</p>
+<p>第三单元的主题主要是以基于JML实现一个社交网络。三次作业总体上难度不大，按照JML并在部分数据结构上做好优化即可。JML虽然很繁琐，但是在某些场景下确实可能有他的用武之地，这个单元让我们初步体验了契约式编程，相较前两个单元轻松不少。</p>
 <h1>测试分析</h1>
 <h2 id="黑箱测试与白箱测试">黑箱测试与白箱测试</h2>
 <ul>
 <li>
-<p>黑盒测试是数据驱动的测试方式，将被测软件视为一个无法打开的黑盒。测试人员不了解软件的内部结构，只关心输入和输出以及系统的功能。</p>
+<p><strong>黑盒测试</strong>是数据驱动的测试方式，将被测软件视为一个无法打开的黑盒。测试人员不了解软件的内部结构，只关心输入和输出以及系统的功能。</p>
 </li>
 <li>
-<p>黑盒测试往往需要大量的数据来检验软件实现是否正确，但是效率比较低，可能比较难以覆盖各种情况</p>
+<p><strong>黑盒测试</strong>往往需要大量的数据来检验软件实现是否正确，但是效率比较低，可能比较难以覆盖各种情况</p>
 </li>
 <li>
-<p>白盒测试是逻辑驱动的测试方式，目标是对软件的内部结构和逻辑进行分析。测试人员需要了解源代码和程序的全面结构。</p>
+<p><strong>白盒测试</strong>是逻辑驱动的测试方式，目标是对软件的内部结构和逻辑进行分析。测试人员需要了解源代码和程序的全面结构。</p>
 </li>
 <li>
 <p>由于测试人员了解全面结构，所以可以针对性的构造测试数据，比如根据分支覆盖率测试。针对性较强，但是可能比较费时。同时由于可能受到已有思维的限制，对一些情况没有考虑全面。</p>
@@ -507,7 +507,7 @@
 <h2 id="总体分析">总体分析</h2>
 <p>第一次作业难度不大，主要是添加人，添加关系，修改关系，查询图中存在的一些结构。</p>
 <h2 id="UML类图">UML类图</h2>
-<p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240513194821654.png" alt="image-20240513194821654"></p>
+<p><img src="4.png" alt="4"></p>
 <h2 id="架构分析与性能优化">架构分析与性能优化</h2>
 <ul>
 <li>
@@ -521,7 +521,7 @@
 </li>
 <li>
 <p>并查集的删除：当需要对某条边删除时，这个连通块就可能会受到影响。此时需要对这个连通块进行重建并查集，如下图。删除3，4之间的边，需要利用Person存储的相邻的人的数据，对3或4进行bfs或者dfs得到删除边之后此人的连通块，如果仍然包含另一人，则说明对连通性没有影响；不然，对两人的连通块分别进行并查集的重建，不妨设两人为父节点。</p>
-<p><img src="C:%5CUsers%5Cluoha%5CDesktop%5C%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87%E7%BC%96%E8%BE%91_20240513201218.jpg" alt="微信图片编辑_20240513201218"></p>
+<p><img src="3.jpg" alt="3"></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">······
 <span class="token function">bfs</span><span class="token punctuation">(</span>id1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 利用bfs得到id1连通块中的人</span>
 <span class="token keyword">boolean</span> iscontain <span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>id2<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -551,7 +551,7 @@
 <p>第二次作业添加了Tag类，并增加了query_tag_value_sum，query_tag_age_var，query_best_acquaintance，query_couple_sum，query_shortest_path等方法。</p>
 <p>这些查询量大多采取动态维护，在查询时效率就比较高。</p>
 <h2 id="UML类图-2">UML类图</h2>
-<p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240513210420478.png" alt="image-20240513210420478"></p>
+<p><img src="2.png" alt="2"></p>
 <h2 id="架构分析与性能优化-2">架构分析与性能优化</h2>
 <ul>
 <li>
@@ -596,16 +596,16 @@ $$</p>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>发现同房的人存在的bug，qtvs由于没有维护，使用两重循环导致超时。</p>
+<p>同时，发现同房的人qtvs由于没有维护，使用两重循环导致超时。</p>
 <h1>第三次作业分析</h1>
 <h2 id="总体分析-3">总体分析</h2>
 <p>第三次作业添加了Message类，有红包，表情消息等几个子类，需要符合接口要求，发送消息可能会对人的某些属性产生影响。</p>
 <h2 id="UML类图-3">UML类图</h2>
-<p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240513213050347.png" alt="image-20240513213050347"></p>
+<p><img src="1.png" alt="1"></p>
 <h2 id="架构分析与性能优化-3">架构分析与性能优化</h2>
 <p>第三次作业基本不涉及比较复杂的算法，按照规格实现即可。</p>
 <h2 id="bug分析-3">bug分析</h2>
-<p>对于sendMessage的群发模式，这个Tag应该是从message中得来，Person的Tag可能会被删除或再添加。在强测之前有同学提出了这个问题，发现我的实现有问题，进行了初步修改。在强测之后再次发现了问题，是由于没有<code>size = message.getTag().getSize()</code>，而是由Person的Tag得到Size，导致出了问题，所幸强测和互测没有出问题（感谢同房的同学）。</p>
+<p>对于sendMessage的群发模式，这个Tag应该是从message中得来，Person的Tag可能会被删除或再添加。在强测之前有同学提出了这个问题，发现我的实现有问题，进行了初步修改。在强测之后再次发现了问题，是由于没有<code>size = message.getTag().getSize()</code>，而是由Person的Tag得到Size，第一次修改遗漏导致出了问题，所幸强测和互测没有出问题（感谢同房的同学）。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getMessage</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">Message</span> message <span class="token operator">=</span> messages<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
     messages<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -625,10 +625,21 @@ $$</p>
 <p>在本单元的作业中，规格与实现分离通过JML表达，JML描述了某个方法的基本功能规格，但是实现方式由我们决定，比如选择合适的容器，采取合适的算法和设计模式，来保证效率。</p>
 <h1>Junit测试</h1>
 <p>本单元进行了三次Junit单元测试。第一次对于qts测试，由规格中没有涉及到其他部分，只要采取随机数据生成多个图计算即可。第二次对于qcs测试，数据生成基本同于第一次测试，不过这次测试保证了生成数据包含稠密图和稀疏图才通过，在第一次情况下更进一步。第三次有所变化，针对dce，确保生成消息和发送消息的多样性，才通过测试。</p>
-<p>本单元重拾Junit，可以根据JML规格逐条编写测试代码，在不了解源码的情况下方便测试。</p>
+<p>本单元重拾Junit，根据JML规格逐条编写测试代码，在不了解源码的情况下也可以进行测试。</p>
 <h1>心得体会</h1>
 <ul>
-<li>本单元学习了JML</li>
+<li>
+<p>本单元学习了JML规格化编程，与前两个单元很不一样，初步体验了契约式编程。</p>
+</li>
+<li>
+<p>本单元需要仔细阅读JML代码，无疑是一件比较繁琐的事。借助AI工具初步解读JML规格后，再去仔细阅读，防止解读错误或者遗漏，帮助我提高了编程效率。</p>
+</li>
+<li>
+<p>本单元对于图论只是浅尝辄止，但是仍然帮助我们重温了部分图论知识。</p>
+</li>
+<li>
+<p>本单元整体上比较简单，但是仍然存在易错的地方，不能太大意。</p>
+</li>
 </ul>
 
 
