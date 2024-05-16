@@ -389,11 +389,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">4</span> Minutes
+              Estimated Reading Time <span class="post-count">8</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.1k</span> In Total
+              Words <span class="post-count">2.3k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -457,6 +457,52 @@
 
         <h1>前言</h1>
 <p>第三单元的主题主要是以基于JML实现一个社交网络。三次作业总体上难度不大，按照JML并在部分数据结构上做好优化即可。JML虽然很繁琐，但是在某些场景下确实有他的用武之地，这个单元让我们初步体验了契约式编程，相较前两个单元轻松不少。</p>
+<h1>测试分析</h1>
+<h2 id="黑箱测试与白箱测试">黑箱测试与白箱测试</h2>
+<ul>
+<li>
+<p>黑盒测试是数据驱动的测试方式，将被测软件视为一个无法打开的黑盒。测试人员不了解软件的内部结构，只关心输入和输出以及系统的功能。</p>
+</li>
+<li>
+<p>黑盒测试往往需要大量的数据来检验软件实现是否正确，但是效率比较低，可能比较难以覆盖各种情况</p>
+</li>
+<li>
+<p>白盒测试是逻辑驱动的测试方式，目标是对软件的内部结构和逻辑进行分析。测试人员需要了解源代码和程序的全面结构。</p>
+</li>
+<li>
+<p>由于测试人员了解全面结构，所以可以针对性的构造测试数据，比如根据分支覆盖率测试。针对性较强，但是可能比较费时。同时由于可能受到已有思维的限制，对一些情况没有考虑全面。</p>
+</li>
+</ul>
+<h2 id="单元测试">单元测试</h2>
+<ul>
+<li><strong>定义</strong>：针对<strong>最小功能模块</strong>进行的测试，通过编写测试用例来验证每个函数或方法在各种输入条件下的正确性。</li>
+<li><strong>目的</strong>：确保每个模块被正确编码，及早发现并解决潜在错误。</li>
+</ul>
+<h2 id="功能测试">功能测试</h2>
+<ul>
+<li><strong>定义</strong>：验证软件的功能是否符合用户需求和设计规格的测试。</li>
+<li><strong>目的</strong>：确保<strong>所有功能</strong>需求得到满足，包括安全性、容错性、兼容性等。</li>
+</ul>
+<h2 id="集成测试">集成测试</h2>
+<ul>
+<li><strong>定义</strong>：将通过单元测试的模块组合在一起，测试它们作为一个整体时的行为。</li>
+<li><strong>目的</strong>：发现与<strong>模块接口</strong>有关的问题，验证模块间<strong>数据流和控制流的正确性</strong>。</li>
+</ul>
+<h2 id="压力测试">压力测试</h2>
+<ul>
+<li><strong>定义</strong>：在超出正常运行条件的环境下，测试软件的稳定性和可靠性。</li>
+<li><strong>目的</strong>：确定软件的负载极限，评估在高负荷下的性能表现。</li>
+</ul>
+<h2 id="回归测试">回归测试</h2>
+<ul>
+<li><strong>定义</strong>：在软件修改后，重新运行之前的测试用例以验证修改是否引入新的错误。</li>
+<li><strong>目的</strong>：确保原有功能和性能没有受到影响，维护软件的稳定性和质量。</li>
+</ul>
+<h2 id="数据构造">数据构造</h2>
+<ul>
+<li>通过随机生成的大量数据来保证大部分情况下不会出错</li>
+<li>手动构造极端数据来保证边界条件或者运行时间满足要求</li>
+</ul>
 <h1>第一次作业分析</h1>
 <h2 id="总体分析">总体分析</h2>
 <p>第一次作业难度不大，主要是添加人，添加关系，修改关系，查询图中存在的一些结构。</p>
@@ -553,13 +599,37 @@ $$</p>
 <p>发现同房的人存在的bug，qtvs由于没有维护，使用两重循环导致超时。</p>
 <h1>第三次作业分析</h1>
 <h2 id="总体分析-3">总体分析</h2>
-<p>第三次作业添加了Message类，有红包，表情消息等几个子类，发送消息可能会对人的某些属性产生影响。</p>
+<p>第三次作业添加了Message类，有红包，表情消息等几个子类，需要符合接口要求，发送消息可能会对人的某些属性产生影响。</p>
 <h2 id="UML类图-3">UML类图</h2>
 <p><img src="C:%5CUsers%5Cluoha%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240513213050347.png" alt="image-20240513213050347"></p>
 <h2 id="架构分析与性能优化-3">架构分析与性能优化</h2>
+<p>第三次作业基本不涉及比较复杂的算法，按照规格实现即可。</p>
 <h2 id="bug分析-3">bug分析</h2>
-<h1>测试体验</h1>
+<p>对于sendMessage的群发模式，这个Tag应该是从message中得来，Person的Tag可能会被删除或再添加。在强测之前有同学提出了这个问题，发现我的实现有问题，进行了初步修改。在强测之后再次发现了问题，是由于没有<code>size = message.getTag().getSize()</code>，而是由Person的Tag得到Size，导致出了问题，所幸强测和互测没有出问题（感谢同房的同学）。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">getMessage</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">Message</span> message <span class="token operator">=</span> messages<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    messages<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    person1<span class="token punctuation">.</span><span class="token function">addsocialvalue</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">getSocialValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">MyTag</span><span class="token punctuation">)</span> message<span class="token punctuation">.</span><span class="token function">getTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addSocialValueInTags</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span><span class="token function">getSocialValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>message <span class="token keyword">instanceof</span> <span class="token class-name">RedEnvelopeMessage</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> size <span class="token operator">=</span> message<span class="token punctuation">.</span><span class="token function">getTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>size <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">int</span> money <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">RedEnvelopeMessage</span><span class="token punctuation">)</span> message<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMoney</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> size<span class="token punctuation">;</span>
+            person1<span class="token punctuation">.</span><span class="token function">addMoney</span><span class="token punctuation">(</span><span class="token operator">-</span>money <span class="token operator">*</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">MyTag</span><span class="token punctuation">)</span> message<span class="token punctuation">.</span><span class="token function">getTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addMoneyInTags</span><span class="token punctuation">(</span>money<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1>规格与实现分离</h1>
+<p>规格定义了软件的功能和行为，它是对软件外部可观察行为的描述。而实现是如何做到规格所描述的要求，要考虑效率，可维护性，可拓展性等。</p>
+<p><strong>规格与实现分离</strong>可以<strong>提高抽象层次</strong>，可以专注于“做什么”而不是“怎么做”，这有助于清晰地理解问题。同时可以更容易地在不同模块间<strong>共享接口</strong>。<strong>测试可以针对规格</strong>进行，而不必关心实现细节，这有助于提高测试的有效性和效率。</p>
+<p>在本单元的作业中，规格与实现分离通过JML表达，JML描述了某个方法的基本功能规格，但是实现方式由我们决定，比如选择合适的容器，采取合适的算法和设计模式，来保证效率。</p>
+<h1>Junit测试</h1>
+<p>本单元进行了三次Junit单元测试。第一次对于qts测试，由规格中没有涉及到其他部分，只要采取随机数据生成多个图计算即可。第二次对于qcs测试，数据生成基本同于第一次测试，不过这次测试保证了生成数据包含稠密图和稀疏图才通过，在第一次情况下更进一步。第三次有所变化，针对dce，确保生成消息和发送消息的多样性，才通过测试。</p>
+<p>本单元重拾Junit，可以根据JML规格逐条编写测试代码，在不了解源码的情况下方便测试。</p>
 <h1>心得体会</h1>
+<ul>
+<li>本单元学习了JML</li>
+</ul>
 
 
         <hr>
@@ -705,7 +775,7 @@ $$</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第一次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第二次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-2"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-2"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第三次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-3"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-3"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">测试体验</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">心得体会</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">测试分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%BB%91%E7%AE%B1%E6%B5%8B%E8%AF%95%E4%B8%8E%E7%99%BD%E7%AE%B1%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">黑箱测试与白箱测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">单元测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">功能测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">集成测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">压力测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">回归测试</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">数据构造</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第一次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第二次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-2"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-2"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">第三次作业分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">总体分析</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UML%E7%B1%BB%E5%9B%BE-3"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">UML类图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-3"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">架构分析与性能优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bug%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">bug分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">规格与实现分离</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Junit测试</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">心得体会</span></a></li></ol>
         
         </div>
       </aside>
